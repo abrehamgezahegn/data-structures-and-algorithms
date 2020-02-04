@@ -37,9 +37,38 @@ class HashTable {
 
     return undefined;
   }
+
+  keys() {
+    let keys = [];
+    for (let i = 0; i < this.data.length; i++) {
+      if (this.data[i]) {
+        keys.push(this.data[i][0][0]);
+        for (let j = 0; j < this.data[i].length; j++) {
+          keys.push(this.data[i][j][0]);
+        }
+      }
+    }
+    console.log(keys);
+  }
+
+  values() {
+    let values = [];
+    for (let i = 0; i < this.data.length; i++) {
+      if (this.data[i]) {
+        for (let j = 0; j < this.data[i].length; j++) {
+          values.push(this.data[i][j][1]);
+        }
+      }
+    }
+    console.log(values);
+  }
 }
 
 const myHash = new HashTable(1);
 myHash.set("amen", 300);
 myHash.set("backthen", "another value");
-console.log(myHash.get("backthe"));
+myHash.set("encore", "august");
+myHash.set("tears", "bitches");
+// myHash.keys();
+myHash.values();
+// console.log(myHash.get("backthe"));
