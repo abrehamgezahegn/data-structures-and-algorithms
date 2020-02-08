@@ -1,0 +1,78 @@
+class LinkedList {
+  constructor(value) {
+    this.head = {
+      value,
+      next: null
+    };
+    this.tail = this.head;
+  }
+
+  prepend(value) {
+    const node = {
+      value,
+      next: this.head
+    };
+    this.head = node;
+  }
+
+  append(value) {
+    const node = {
+      value,
+      next: null
+    };
+    this.tail.next = node;
+    node.next = null;
+  }
+
+  insert(value, index) {
+    const node = {
+      value,
+      next: null
+    };
+
+    let currentNode = this.traverseToIndex(index);
+    node.next = currentNode.next;
+    currentNode.next = node;
+  }
+
+  remove(index) {
+    let currentNode = this.traverseToIndex(index - 1);
+    currentNode.next = currentNode.next.next;
+    // console.log("removing", currentNode);
+  }
+
+  traverseToIndex(index) {
+    let currentNode = this.head; // we are referring the whole linked list, not to override it.
+    let counter = 0;
+    while (counter < index - 1) {
+      currentNode = currentNode.next; // update current node
+      counter++;
+    }
+
+    return currentNode;
+  }
+
+  printInArray() {
+    let node = this.head;
+    let array = [];
+    while (node) {
+      array.push(node.value);
+      node = node.next;
+    }
+    console.log(array);
+  }
+}
+
+const myLinkedList = new LinkedList("firstItem");
+myLinkedList.prepend("down");
+myLinkedList.prepend("throw");
+// myLinkedList.append("got");
+myLinkedList.insert("me", 1);
+myLinkedList.printInArray();
+myLinkedList.remove(1);
+myLinkedList.printInArray();
+console.log("tailis ", myLinkedList.tail);
+console.log("head ", myLinkedList.head);
+
+// console.log(myLinkedList);
+// console.log(myLinkedList.head);
