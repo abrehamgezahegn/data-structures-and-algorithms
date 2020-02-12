@@ -5,6 +5,7 @@ class LinkedList {
       next: null
     };
     this.tail = this.head;
+    this.length = 1;
   }
 
   prepend(value) {
@@ -13,6 +14,7 @@ class LinkedList {
       next: this.head
     };
     this.head = node;
+    this.length++;
   }
 
   append(value) {
@@ -22,6 +24,8 @@ class LinkedList {
     };
     this.tail.next = node;
     node.next = null;
+    this.tail = node;
+    this.length++;
   }
 
   insert(value, index) {
@@ -33,12 +37,34 @@ class LinkedList {
     let currentNode = this.traverseToIndex(index);
     node.next = currentNode.next;
     currentNode.next = node;
+    this.length++;
   }
 
   remove(index) {
     let currentNode = this.traverseToIndex(index - 1);
     currentNode.next = currentNode.next.next;
+    this.length--;
+
     // console.log("removing", currentNode);
+  }
+
+  reverse() {
+    let length = this.length - 1;
+    for (let i = this.length - 2; i > -1; i--) {
+      let node = this.traverseToIndex(i + 1);
+      this.append(node.value);
+    }
+
+    const node = this.traverseToIndex(this.length - length);
+    this.head = node;
+  }
+
+  findThirdFromTheEnd() {
+    let head = this.head;
+    while (head.next.next.next) {
+      head = head.next;
+    }
+    console.log(head);
   }
 
   traverseToIndex(index) {
@@ -63,16 +89,16 @@ class LinkedList {
   }
 }
 
-const myLinkedList = new LinkedList("firstItem");
-myLinkedList.prepend("down");
-myLinkedList.prepend("throw");
-// myLinkedList.append("got");
-myLinkedList.insert("me", 1);
+const myLinkedList = new LinkedList("head");
+myLinkedList.append("down");
+myLinkedList.append("throw");
+myLinkedList.prepend("under");
+myLinkedList.append("pounding");
+myLinkedList.prepend("whenever");
+myLinkedList.append("why");
 myLinkedList.printInArray();
-myLinkedList.remove(1);
-myLinkedList.printInArray();
-console.log("tailis ", myLinkedList.tail);
-console.log("head ", myLinkedList.head);
-
-// console.log(myLinkedList);
-// console.log(myLinkedList.head);
+myLinkedList.findThirdFromTheEnd();
+// myLinkedList.printInArray();
+// myLinkedList.reverse();
+// myLinkedList.remove(2);
+// myLinkedList.printInArray();
