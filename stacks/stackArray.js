@@ -1,6 +1,6 @@
 class Stack {
   constructor() {
-    this.stack = ["asd", "ad", 12, 12];
+    this.stack = [];
     this.length = this.stack.length;
   }
 
