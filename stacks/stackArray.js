@@ -1,22 +1,23 @@
 class Stack {
   constructor() {
     this.stack = [];
-    this.length = this.stack.length;
+    // this.length = this.stack.length;
   }
 
-  push() {
+  push(value) {
     this.stack.push(value);
   }
 
   pop() {
-    this.stack.pop();
+    return this.stack.pop();
   }
 
   peak() {
-    return this.stack[this.length - 1];
+    return this.stack[this.stack.length - 1];
   }
 }
 
-const myStack = new Stack();
+const stackOne = new Stack();
+const stackTwo = new Stack();
 
-myStack.peak();
+module.exports = { stackOne, stackTwo };

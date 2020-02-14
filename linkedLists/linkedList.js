@@ -98,7 +98,7 @@ myLinkedList.prepend("whenever");
 myLinkedList.append("why");
 myLinkedList.printInArray();
 myLinkedList.findThirdFromTheEnd();
-// myLinkedList.printInArray();
+myLinkedList.printInArray();
 // myLinkedList.reverse();
 // myLinkedList.remove(2);
 // myLinkedList.printInArray();
