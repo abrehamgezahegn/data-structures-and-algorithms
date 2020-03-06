@@ -63,6 +63,15 @@ class BinarySearchTree {
     }
     // crazy shit will happen here
   }
+
+  traverse(root) {
+    if (root == null) return null;
+    let obj = {};
+    obj.value = root.value;
+    obj.left = this.traverse(root.left);
+    obj.right = this.traverse(root.right);
+    return obj;
+  }
 }
 
 const myBinary = new BinarySearchTree();
@@ -73,5 +82,7 @@ myBinary.insert(12);
 myBinary.insert(13);
 myBinary.insert(14);
 myBinary.insert(4);
-console.log(JSON.stringify(myBinary));
-console.log(myBinary.lookup(3));
+// console.log(myBinary.lookup(3));
+
+// console.log(JSON.stringify(myBinary.traverse(myBinary.root)));
+// console.log(JSON.stringify(myBinary.root));
