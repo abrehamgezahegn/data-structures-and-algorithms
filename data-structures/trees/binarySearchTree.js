@@ -1,6 +1,7 @@
 class BinarySearchTree {
   constructor() {
     this.root = null;
+    this.leastDistance = undefined;
   }
 
   insert(value) {
@@ -9,6 +10,7 @@ class BinarySearchTree {
       this.root.value = value;
       this.root.right = null;
       this.root.left = null;
+      this.leastDistance = value;
       return;
     }
 
@@ -16,6 +18,7 @@ class BinarySearchTree {
     while (true) {
       if (node.value > value) {
         // insert to left
+        this.getLeastDistance(node, value);
         if (!node.left) {
           node.left = {
             value,
@@ -26,12 +29,14 @@ class BinarySearchTree {
         }
         node = node.left;
       } else {
+        this.getLeastDistance(node, value);
         if (!node.right) {
           node.right = {
             value,
             left: null,
             right: null
           };
+
           return;
         }
         node = node.right;
@@ -72,17 +77,26 @@ class BinarySearchTree {
     obj.right = this.traverse(root.right);
     return obj;
   }
+
+  getLeastDistance(node, value) {
+    let distance = Math.abs(node.value - value);
+    if (distance < this.leastDistance) {
+      console.log("hushh", this.leastDistance);
+      this.leastDistance = distance;
+    }
+  }
 }
 
 const myBinary = new BinarySearchTree();
 myBinary.insert(9);
 myBinary.insert(3);
-myBinary.insert(10);
-myBinary.insert(12);
+myBinary.insert(11);
+myBinary.insert(5);
 myBinary.insert(13);
-myBinary.insert(14);
-myBinary.insert(4);
+// myBinary.insert(14);
+// myBinary.insert(4);
 // console.log(myBinary.lookup(3));
 
-// console.log(JSON.stringify(myBinary.traverse(myBinary.root)));
+console.log(JSON.stringify(myBinary.traverse(myBinary.root)));
+console.log(myBinary.leastDistance);
 // console.log(JSON.stringify(myBinary.root));
