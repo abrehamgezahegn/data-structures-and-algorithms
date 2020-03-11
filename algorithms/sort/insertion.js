@@ -3,6 +3,8 @@
 
 // not really sure if this is insertions sort tho.
 
+// O(nlogn)
+
 const insertionSort = arr => {
   let array = [...arr, ...arr, ...arr, ...arr];
   let counter = 0; //extra: to keep  track of how many steps we took

@@ -1,3 +1,5 @@
+// both O(n^2)
+
 const bubbleSortNested = arr => {
   let array = arr;
   for (let i = 0; i < arr.length; i++) {

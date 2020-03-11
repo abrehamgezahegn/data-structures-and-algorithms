@@ -1,3 +1,4 @@
+// O(n^2)
 const selectionSort = arr => {
   let array = arr;
 
