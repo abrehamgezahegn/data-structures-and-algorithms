@@ -81,22 +81,23 @@ class BinarySearchTree {
   getLeastDistance(node, value) {
     let distance = Math.abs(node.value - value);
     if (distance < this.leastDistance) {
-      console.log("hushh", this.leastDistance);
       this.leastDistance = distance;
     }
   }
 }
 
-const myBinary = new BinarySearchTree();
-myBinary.insert(9);
-myBinary.insert(3);
-myBinary.insert(11);
-myBinary.insert(5);
-myBinary.insert(13);
+// const myBinary = new BinarySearchTree();
+// myBinary.insert(9);
+// myBinary.insert(3);
+// myBinary.insert(11);
+// myBinary.insert(5);
+// myBinary.insert(13);
 // myBinary.insert(14);
 // myBinary.insert(4);
 // console.log(myBinary.lookup(3));
 
-console.log(JSON.stringify(myBinary.traverse(myBinary.root)));
-console.log(myBinary.leastDistance);
+// console.log(JSON.stringify(myBinary.traverse(myBinary.root)));
+// console.log(myBinary.leastDistance);
 // console.log(JSON.stringify(myBinary.root));
+
+module.exports = new BinarySearchTree();

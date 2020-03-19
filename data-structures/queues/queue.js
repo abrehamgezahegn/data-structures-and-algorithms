@@ -26,15 +26,18 @@ class Queue {
     this.first = this.first.next;
     if (this.length === 1) this.last = null;
     this.length--;
+    return node;
   }
 }
 
 const myQueue = new Queue();
 
-myQueue.enqueue("kesemay");
-myQueue.enqueue("hyloga");
-console.log(myQueue);
+// myQueue.enqueue("kesemay");
+// myQueue.enqueue("hyloga");
+// console.log(myQueue);
 
-myQueue.dequeue();
-myQueue.dequeue();
-console.log(myQueue);
+// myQueue.dequeue();
+// myQueue.dequeue();
+// console.log(myQueue);
+
+module.exports = new Queue();
