@@ -6,7 +6,7 @@
 // O(nlogn)
 
 const insertionSort = arr => {
-  let array = [...arr, ...arr, ...arr, ...arr];
+  let array = arr;
   let counter = 0; //extra: to keep  track of how many steps we took
 
   for (let j = 0; j < array.length; j++) {
@@ -46,4 +46,26 @@ const insertionSort = arr => {
 //   ])
 // );
 
-console.log(insertionSort([4, 5, 6, 1, 1]));
+console.log(
+  insertionSort([
+    80,
+    70,
+    68,
+    65,
+    64,
+    63,
+    59,
+    57,
+    56,
+    50,
+    40,
+    32,
+    24,
+    19,
+    16,
+    14,
+    10,
+    9,
+    8
+  ])
+);
