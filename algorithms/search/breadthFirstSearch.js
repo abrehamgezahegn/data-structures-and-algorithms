@@ -1,3 +1,26 @@
+/*
+ pros 
+  - shortest path (eg. google map)
+  - closer nodes
+
+cons 
+  - higher space complexity
+*/
+
+/*
+ To find the shortest path for weighted graphs,
+we should use Bellman Ford's or Dijkstra's algorithm.
+
+Bellman's Algorithm 
+  - faster
+  - doesn't support -ve weights
+
+Dijakstra's Algorithm
+  - slower
+  - supports -ve weights
+
+*/
+
 const bst = require("../../data-structures/trees/binarySearchTree");
 const queue = require("../../data-structures/queues/queue");
 
@@ -31,20 +54,33 @@ bst.breadthFirstSearch = () => {
 };
 
 bst.breadthFirstSearchR = (queue, list) => {
+  // we receive queue and list as a parameter t
+  // o avoid setting them default on every call
+
+  // base case (one part of recursive function)
   if (queue.length === 0) {
     return list;
   }
 
-  let item = queue.dequeue();
-  let currentNode = item.value;
-  while (queue.length > 0) {
-    list.push(currentNode.value);
-    if (currentNode.left) queue.enqueue(currentNode.left);
-    if (currentNode.right) queue.enqueue(currentNode.right);
+  // same as non-recursive one
+  let queueItem = queue.dequeue();
+  let currentNode = queueItem.value;
+  list.push(currentNode.value);
+
+  if (currentNode.left) {
+    queue.enqueue(currentNode.left);
   }
 
-  return bst.breadthFirstSearch(queue, list);
+  if (currentNode.right) {
+    queue.enqueue(currentNode.right);
+  }
+
+  // we return to make sure we catch the base case return value.
+  //  (haven't understood this yet)
+
+  return bst.breadthFirstSearchR(queue, list);
 };
+
 queue.enqueue(bst.root);
 bst.breadthFirstSearchR(queue, []);
 
